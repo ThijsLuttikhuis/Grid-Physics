@@ -5,8 +5,7 @@
 #ifndef GRIDPHYSICS_COLOR_H
 #define GRIDPHYSICS_COLOR_H
 
-namespace window {
-
+namespace utils {
 
 class Color {
     public:
@@ -23,4 +22,4 @@ class Color {
 
 }
 
-#endif //SOLARSYSTEM_COLOR_H
+#endif //GRIDPHYSICS_COLOR_H

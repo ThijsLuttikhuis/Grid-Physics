@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project( GridPhysics )
+project(GridPhysics)
 
 set(CMAKE_CXX_FLAGS_RELEASE "-O1 -g0 -Werror -std=c++11 -pthread")
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3 -Wall -std=c++11 -pthread")
@@ -14,10 +14,13 @@ link_directories(${PROJECT_SOURCE_DIR}/include/lib-mingw)
 set(GRID_SOURCES
         ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.cpp
         ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.h
+        ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.cpp
+        ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.h
         )
 
 set(UTILS_SOURCES
         ${PROJECT_SOURCE_DIR}/src/utils/Color.h
+        ${PROJECT_SOURCE_DIR}/src/utils/Constants.h
         )
 
 set(WINDOW_SOURCES
@@ -31,10 +34,13 @@ add_executable(GridPhysics
         ${WINDOW_SOURCES}
         )
 
-include_directories(GridPhysics ${OPENGL_INCLUDE_DIR})
+include_directories(GridPhysics
+        ${OPENGL_INCLUDE_DIR}
+        )
 
 target_link_libraries(GridPhysics
-        ${OPENGL_gl_LIBRARY}
         glfw3dll
         pthread
-        ${CMAKE_THREAD_LIBS_INIT})
+        ${OPENGL_gl_LIBRARY}
+        ${CMAKE_THREAD_LIBS_INIT}
+        )
