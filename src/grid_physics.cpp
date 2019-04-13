@@ -9,6 +9,10 @@
 #include "utils/Constants.h"
 
 int main() {
+    window::Window::initialize();
+
+
+
 
 
     return 0;

@@ -5,5 +5,4 @@
 #include "GridPoint.h"
 
 namespace grid {
-
 }

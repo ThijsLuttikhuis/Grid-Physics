@@ -5,18 +5,24 @@
 #ifndef GRIDPHYSICS_SANDPILES_H
 #define GRIDPHYSICS_SANDPILES_H
 
-#include "GridPoint.h"
+#include "Grid.h"
 
 namespace grid {
-
-class SandPiles : public GridPoint {
+/**
+ *  ints[0] = value of sandpile
+ *
+**/
+class SandPiles : public Grid {
     private:
 
 
     public:
-        void draw() override;
-        void update() override;
+        explicit SandPiles(std::array<std::array<GridPoint*, HEIGHT>, WIDTH> grid)
+                :Grid(grid) {};
 
+        void draw(unsigned char* &image) override;
+        void update() override;
+        Grid* copyGrid() override;
 };
 
 }

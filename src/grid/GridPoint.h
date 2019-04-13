@@ -6,16 +6,25 @@
 #define GRIDPHYSICS_GRIDPOINT_H
 
 #include <array>
+#include <vector>
 #include "../utils/Constants.h"
+#include "../utils/Color.h"
 
 namespace grid {
 
 class GridPoint {
     private:
-        using Array = std::array<std::array<GridPoint, HEIGHT>, WIDTH>;
+
     public:
-        virtual void draw() = 0;
-        virtual void update() = 0;
+        const int thisX;
+        const int thisY;
+        bool noBoundary;
+        using Color = utils::Color;
+        std::vector<int> ints;
+        std::vector<double> doubles;
+
+        std::vector<int> tempInts;
+        std::vector<double> tempDoubles;
 };
 
 }

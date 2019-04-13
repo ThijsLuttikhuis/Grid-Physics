@@ -12,10 +12,12 @@ link_directories(${PROJECT_SOURCE_DIR}/include/lib-vc2015)
 link_directories(${PROJECT_SOURCE_DIR}/include/lib-mingw)
 
 set(GRID_SOURCES
+        ${PROJECT_SOURCE_DIR}/src/grid/Grid.cpp
+        ${PROJECT_SOURCE_DIR}/src/grid/Grid.h
         ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.cpp
         ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.h
-        ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.cpp
-        ${PROJECT_SOURCE_DIR}/src/grid/GridPoint.h
+        ${PROJECT_SOURCE_DIR}/src/grid/SandPiles.cpp
+        ${PROJECT_SOURCE_DIR}/src/grid/SandPiles.h
         )
 
 set(UTILS_SOURCES

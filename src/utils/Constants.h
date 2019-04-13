@@ -6,8 +6,8 @@
 #define GRIDPHYSICS_CONSTANTS_H
 
 
-const int WIDTH = 400;
-const int HEIGHT = 400;
+const int WIDTH = 999;
+const int HEIGHT = 999;
 
 
 #endif //GRIDPHYSICS_CONSTANTS_H

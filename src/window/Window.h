@@ -6,20 +6,22 @@
 #define GRIDPHYSICS_WINDOW_H
 
 #include <iostream>
-#include <array>
 #include <vector>
 #include <memory>
 #include <mutex>
 
 #include "../utils/Color.h"
-#include "../grid/GridPoint.h"
 #include "../utils/Constants.h"
+
+#include "../grid/GridPoint.h"
+#include "../grid/Grid.h"
 
 namespace utils {
 class Color;
 }
 
 namespace grid {
+class Grid;
 class GridPoint;
 }
 
@@ -27,33 +29,38 @@ namespace window {
 
 class Window {
     private:
+        using Grid = grid::Grid;
         using GridPoint = grid::GridPoint;
-        using Array = std::array<std::array<GridPoint, HEIGHT>, WIDTH>;
         using Color = utils::Color;
 
-        static Array grid;
+        static Grid* grid;
         static std::mutex gridMutex;
 
     public:
-        static Color* image;
+        static unsigned char* image;
 
-        static void setGrid(Array gridPoint) {
+        static void setGrid(Grid* newGrid) {
             std::lock_guard<std::mutex> lock(gridMutex);
-
-            grid = gridPoint;
+            grid = newGrid;
         }
 
-        static Array getGrid() {
-            std::lock_guard<std::mutex> lock(gridMutex);
-            Array gridPoint{};
-            gridPoint = grid;
-            return gridPoint;
+        static Grid* getGrid() {
+            Grid* _grid;
+            {
+                std::lock_guard<std::mutex> lock(gridMutex);
+                _grid = grid->copyGrid();
+            }
+            return _grid;
         }
 
         static void initialize() {
-            image = new Color[WIDTH * HEIGHT];
+            delete[] image;
+            image = new unsigned char[4 * WIDTH * HEIGHT];
         }
 };
+
+grid::Grid* Window::grid = grid;
+unsigned char* Window::image;
 
 } //window
 
